@@ -1,0 +1,22 @@
+<!-- templates/job_search.html -->
+<html>
+<head>
+    <title>Job Search</title>
+</head>
+<body>
+    <h1>Job Search</h1>
+    <form method="GET" action="{% url 'job_search' %}">
+        <label for="keyword">Keyword:</label>
+        <input type="text" name="keyword" value="{{ keyword }}">
+        <button type="submit">Search</button>
+    </form>
+
+    <ul>
+        {% for job in jobs %}
+            <li>{{ job.title }} - {{ job.company }} - {{ job.location }}</li>
+        {% empty %}
+            <li>No jobs found.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
